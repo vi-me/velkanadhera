@@ -7,12 +7,14 @@
  dekorace nadpisů #629edb
 */
 
+/*ZÁKLADNÍ vzhled stránky*/ 
 
 body {
     padding: 0;
     background-color: #f5f5f5;
     font-family: 'Merriweather', serif;
     line-height: 1.6;
+    margin: 0
 }
 
 .platno {
@@ -34,10 +36,16 @@ body {
 box-shadow: 10px 5px 15px rgb(134, 134, 134);
 }
 
+.autor {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 img {
     width: 100%;
 }
 
+.hlavni-text,
 .leva,
 .prava {
     padding: 1.5rem;
@@ -48,7 +56,6 @@ p {
 }
 
 /* HLAVICKA */
-
 
 .hlavicka{
     padding: 1.5rem;
@@ -82,7 +89,7 @@ p {
     background: rgba(255, 255, 255, 0.75);    
     width: 80px;
     left: calc(50% - 40px);
-    height: 1.5px; 
+    height: 1px; 
     bottom: -20px;
 
 }
@@ -104,8 +111,12 @@ li {
     display: inline-block;
     width: 100%;
     text-align: center;
-    border-bottom: 0.3px rgba(116, 116, 116, 0.1) solid;
     padding: 0.2rem;
+    border-bottom: 0.3px rgba(116, 116, 116, 0.1) solid;
+}
+
+li:nth-child(4)  {
+    border-bottom: none;
 }
 
 .menu {
@@ -130,6 +141,7 @@ li a:hover {
 
 
 /* OBSAH */
+
 .popisek, 
 .popisek a {
     font-size: 0.8rem;
@@ -198,7 +210,6 @@ h2:after {
 
 /* PATICKA */
 
-
 .paticka {
     display: flex;
     flex-direction: column;
@@ -212,11 +223,10 @@ h2:after {
     font-size: 0.7rem;
 }
 
+/* tato mezičást část řeší jenom věci, co jsou JENOM pro verzi pro TABLET... :) */
 
 @media screen and (min-width: 500px) and (max-width:1000px) {
- 
-
-
+ /* MENU pro TABLET */
     .menu{
        display:flex;
        flex-direction: row;       
@@ -235,16 +245,29 @@ h2:after {
         padding: 0.5rem;
     }
 
+    li a {
+        font-size: 0.8rem;
+    }
+
     li:nth-child(2),
     li:nth-child(3),
     li:nth-child(4)  {
         border-left: 0.3px rgba(116, 116, 116, 0.1) solid;
     }
 
+    li:nth-child(4)  {
+        border-bottom: 0.3px rgba(116, 116, 116, 0.1) solid;
+    }
+
 }
 
+
+ /* tato část řeší věci, co jsou pro TABLET i pro PC. Víceméně... :) */
+
 @media screen and (min-width: 500px)  {
-  
+ 
+    /*ZÁKLADNÍ vzhled stránky pro TABLET a pro PC*/ 
+
     .platno,
     .hlavicka,
     .paticka {
@@ -267,15 +290,16 @@ h2:after {
         font-size: 1rem;
     }
     
+
+    /*OBSAH pro TABLET a pro PC*/ 
     p {
         font-size: 1rem;
     }
 
     h2 {
         font-size: 2rem;
-
     }
-  
+
     .obrazek {
         position: relative;
     }
@@ -293,6 +317,7 @@ h2:after {
       color: white;
     }
     
+    /*GALERIE pro TABLET a pro PC*/ 
 
     .galerie  {
         display: flex;
@@ -316,31 +341,13 @@ h2:after {
     .foto {
         width: 50%;
         position: relative;
-
-    } 
-
-    .foto {
         overflow: hidden;
-
     } 
+
     .foto img {
         display: block;
     } 
 
-
-/* nástřel jineho řešeni
-    figcaption {
-        position: absolute;
-        width: 100%;
-        bottom: -150px;
-        padding-top: 0rem;
-        margin: 0;
-        transition: bottom 0.3s ease-in-out;
-    }
-
-    .foto:hover figcaption {
-        bottom: 0;
-    }*/
 
     figcaption {
         position: absolute;
@@ -349,8 +356,8 @@ h2:after {
         padding-top: 0.7rem;
         padding-bottom: 0.7rem;
         background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-        transform: translateY(150px);
-        transition: transform 0.3s ease-in-out;
+        transform: translateY(140px);
+        transition: transform 0.7s ease-in-out;
     }  
 
     figcaption .popisek {
@@ -361,51 +368,65 @@ h2:after {
         transform: translateY(15px);
     }
 
-  .foto:hover img {
-        transition-duration: 1s;
+    .foto:hover img {
+        transition-duration: 0.7s;
         transform: scale(1.25);
+    }
 
+/* nástřel jineho řešení animací v galerii, po menších úpravách by to asi taky fungovalo
+   
+    figcaption {
+            position: absolute;
+            width: 100%;
+            bottom: -150px;
+            padding-top: 0rem;
+            margin: 0;
+            transition: bottom 0.3s ease-in-out;
+        }
+
+        .foto:hover figcaption {
+            bottom: 0;
+        }
+        
+*/
+
+
+   /* Patička pro TABLET i PC*/
+    .paticka p, .paticka a {
+        font-size: 0.85rem;
     }
 
 
 }
 
+/* tato část řeší věci, co jsou JENOM pro PC... :) */
 
 @media screen and (min-width: 1000px) {  
 
-.hlavicka {width: 100%;}
+    /* ZAKLADNI vzhled stranky jen pro PC*/
 
-
-    .foto {
-        width: calc(100%/3);
-        position: relative;
-
-    } 
-
-    figcaption {
-        padding-top: 1rem;
-        padding-bottom: 1rem;}
-
-        .galerie .popisek {
-            font-size: 1rem;
-            color: white;
-         }
-          
-         .galerie .popisek a,
-         .galerie .popisek-copy {
-             font-size: 0.6rem;
-             color: white;
-          }
+    .hlavicka {
+        width: 100%;
+    }
 
     .leva p {
-        padding-right: 25% ;
+        padding-right: 25%;
     }
 
     .prava p {
-        padding-left: 25% ;
+        padding-left: 25%;
     }
 
+
+    .platno{
+        margin-top: -2rem
+    }    
+
+    /* MENU a ÚVOD jen pro PC*/
+
     .kontejner-na-menu-a-uvod {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
         display: flex;
     }
 
@@ -415,16 +436,16 @@ h2:after {
     }
 
 
-
-    .menu{
+   .menu{
         display:flex;
         flex-direction: column;       
         width: 100%;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+        padding-top: 1.5rem;
     }
 
-    li  {
+    li {
         display: flex;
         justify-content: flex-start;
         width: 100%;
@@ -432,32 +453,54 @@ h2:after {
     }
 
     li:nth-child(2),
-    li:nth-child(3),
-    li:nth-child(4)  {
+    li:nth-child(3)  {
         border-bottom: 0.3px rgba(116, 116, 116, 0.1) solid;
     }
 
-
+    li a {
+        font-size: 0.9rem;
+    }
 
     .hlavicka {
-    max-width: none;
-    min-width: 100%;
-    box-shadow: none;
-    padding-left: 30%;
-    padding-right: 30%;
-    
+        min-width: 100%;
+        box-shadow: none;
+        display: block;
     }
 
-    p .hlavicka {
-        max-width: 50%;
+    .hlavicka .titulek,
+    .perex {
         margin: auto;
-        padding-left: 2rem;
-        margin-right: 50rem;
-
+        position: relative;
+        max-width: 961px;
     }
 
-    .platno{
-        margin-top: -2rem
+    .perex {
+        margin-bottom: 2rem;
     }
 
+
+    /* Galerie jen pro PC*/
+
+    .foto {
+        width: calc(100%/3);
+        position: relative;
+     } 
+
+    figcaption {
+        padding-top: 1rem;
+        padding-bottom: 1rem;}
+
+    .galerie .popisek {
+        font-size: 1rem;
+        color: white;
+    }
+    
+    .galerie .popisek a,
+    .galerie .popisek-copy {
+        font-size: 0.6rem;
+        color: white;
+    }
+
+
+  
 }
